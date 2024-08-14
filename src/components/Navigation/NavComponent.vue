@@ -1,9 +1,10 @@
 <script>
 import LinkComponent from "@/components/Navigation/LinkComponent.vue";
+import {Icon} from "@iconify/vue";
 
 export default {
   name: "NavComponent",
-  components: {LinkComponent}
+  components: {Icon, LinkComponent}
 
   /*nav Home about admin user */
 }
@@ -12,36 +13,26 @@ export default {
 <template>
   <div class="navbar">
     <div class="header-nav">
-
+      <img src="@/assets/logo.png" alt="logo">
+      <hr>
     </div>
     <nav>
       <ul>
-        <li>
-          <link-component to="/" icon="bx:bx-home" text="Home"/>
-
-        </li>
-        <li>
-          <link-component to="/about" icon="bx:bx-info-circle" text="about"/>
-        </li>
-        <li>
-          <link-component to="/admin" icon="bx:bx-user-circle" text="Notre équipe"/>
-        </li>
-        <li>
-          <link-component to="/user" icon="bx:bx-user" text="profil"/>
-        </li>
+        <LinkComponent/>
       </ul>
     </nav>
     <div class="footer-nav">
       <hr>
       <ul>
         <li>
-          <link-component to="/settings" icon="bx:bx-cog"/>
+          <router-link to="/parametter">
+            <Icon icon="eos-icons:rotating-gear"/>
+          </router-link>
         </li>
         <li>
-          <link-component to="/profile" icon="bx:bx-user"/>
-        </li>
-        <li>
-          <link-component to="/logout" icon="bx:bx-log-out"/>
+          <router-link to="/login">
+            <Icon icon="bx:bx-log-out"/>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -51,72 +42,83 @@ export default {
 
 <style scoped lang="scss">
 .navbar {
-  z-index: 5;
-  background-color: #333;
-  width: 70px;
+  margin-left:16px ;
+  z-index: 1000;
   position: fixed;
-  height: 100vh;
+  top: 32px;
   display: flex;
-  justify-content: space-between;
-  top: 0;
-  left: 0;
+  width: 70px;
+  height: 90vh;
+  padding: 10px;
   flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.50);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(5px);
 
   .header-nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding: 10px;
-
-    h1 {
-      color: #fff;
-    }
-
+    gap: 5px;
     img {
       width: 50px;
       height: 50px;
+      object-fit: cover;
+      border-radius:90px ;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     }
   }
 
   nav {
-    display: flex;
-    flex-direction: column;
-
     ul {
       display: flex;
       flex-direction: column;
-      padding: 10px;
-      list-style-type: none;
-      gap: 8px;
-
-      li {
-        margin: 0 10px;
-      }
+      gap: 5px;
     }
   }
 
+  hr {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.84);
+  }
   .footer-nav {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    gap: 10px;
-    padding: 10px;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
     width: 100%;
-    hr {
-      width: 100%;
-      border: 1px solid #fff;
-    }
+
+    gap: 5px;
 
     ul {
       display: flex;
+      gap: 5px;
       flex-direction: column;
-      padding: 10px;
-      list-style-type: none;
-      gap: 8px;
+      margin-bottom: 32px;
+      li {
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background: #2A3138;
+          color: #ffff;
+          transition: all 0.5s;
+          &:hover {
+            background: #2A3138;
+            color: #ffff;
+            border-radius: 16px;
+          }
+        }
+      }
     }
   }
 }
-
-
 </style>

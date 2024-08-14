@@ -18,13 +18,20 @@ const routes = [
                 path: '/about',
                 name: 'about',
                 component: () => import('@/views/Site/Page/AboutView.vue')
+            },
+            {
+                path: '/nosadmin',
+                name: 'nosadmin',
+                component: () => import('@/views/Site/Page/NosAdminView.vue')
+            },
+            {
+                path:'nosmembre',
+                name:'nosmembre',
+                component:()=>import('@/views/Site/Page/NosMembreView.vue')
             }
         ]
     },
-
-
 ]
-
 const router = createRouter({
     history: createWebHistory(),
     routes
